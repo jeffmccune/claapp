@@ -1,9 +1,10 @@
 CREATE TABLE users
-(id VARCHAR(20) PRIMARY KEY,
- first_name VARCHAR(30),
- last_name VARCHAR(30),
- email VARCHAR(30),
- admin BOOLEAN,
+(id VARCHAR(40) PRIMARY KEY,
+ name VARCHAR(60),
+ email VARCHAR(60),
+ github_username VARCHAR(30),
+ created_at TIME,
+ updated_at TIME,
  last_login TIME,
- is_active BOOLEAN,
+ admin BOOLEAN,
  pass VARCHAR(100));
