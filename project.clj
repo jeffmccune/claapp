@@ -44,7 +44,7 @@
   :ragtime
   {:migrations ragtime.sql.files/migrations
    :database
-   "jdbc:postgresql://localhost/claapp?user=db_user_name_here&password=db_user_password_here"}
+   "jdbc:postgresql://localhost/claapp?user=claapp&password=claapp"}
   
   
   
