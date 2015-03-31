@@ -54,8 +54,18 @@ $ heroku open
 
 ### Database Migration
 
-To be added.  We need to modify the code to read the database connection string
-from the enviornment.
+Make sure you have a database configured locally, or a database added to
+heroku, or your PaaS of choice.  Then run:
+
+    lein ragtime migrate
+
+For example, on Heroku:
+
+    heroku run lein ragtime migrate
+
+Database migration requires the `DATABASE\_URL` environment variable, otherwise
+it defaults to connecting to
+`"jdbc:postgresql://localhost/claapp?user=claapp&password=claapp"`.
 
 ## Troubleshooting
 
