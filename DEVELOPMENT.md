@@ -50,3 +50,13 @@ $ heroku create
 $ git push heroku master
 $ heroku open
 ```
+
+### Database Migration
+
+To be added.  We need to modify the code to read the database connection string
+from the enviornment.
+
+## Troubleshooting
+
+If you're unable to run `heroku run lein ragtime migrate`, try `heroku run
+'lein do clean; lein ragtime migrate;'` as a workaround.
