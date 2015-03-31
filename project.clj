@@ -43,9 +43,19 @@
   
   :ragtime
   {:migrations ragtime.sql.files/migrations
-   :database (if-let [db-url (System/getenv "DATABASE_URL")]
-                     (format "jdbc:%s" db-url)
-                     "jdbc:postgresql://localhost/claapp")}
+   :database   (if-let [db-url (System/getenv "DATABASE_URL")]
+                       (let [db-uri (java.net.URI. db-url)
+                             host (.getHost db-uri)
+                             port (.getPort db-uri)
+                             path (.getPath db-uri)
+                             user-and-pass (if (nil? (.getUserInfo db-uri))
+                                             nil (clojure.string/split (.getUserInfo db-uri) #":"))
+                             user (get user-and-pass 0)
+                             pass (get user-and-pass 1)
+                             subname (if (= -1 port) (format "//%s%s" host path)
+                                                     (format "//%s:%s%s" host port path))]
+                            (format "jdbc:postgresql:%s?user=%s&password=%s" subname user pass))
+                       "jdbc:postgresql://localhost/claapp")}
 
   :profiles
   {:uberjar {:omit-source true
