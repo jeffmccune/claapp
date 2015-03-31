@@ -47,6 +47,7 @@ project.clj should connect to the local postgres database.
 
 ```sh
 $ heroku create
+$ heroku addons:add heroku-postgresql:hobby-dev
 $ git push heroku master
 $ heroku open
 ```

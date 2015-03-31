@@ -43,12 +43,10 @@
   
   :ragtime
   {:migrations ragtime.sql.files/migrations
-   :database
-   "jdbc:postgresql://localhost/claapp?user=claapp&password=claapp"}
-  
-  
-  
-  
+   :database (if-let [db-url (System/getenv "DATABASE_URL")]
+                     (format "jdbc:%s" db-url)
+                     "jdbc:postgresql://localhost/claapp")}
+
   :profiles
   {:uberjar {:omit-source true
              :env {:production true}
